@@ -8,7 +8,7 @@ class Details extends React.Component {
         super(props)
         this.state = {
             movie: {}, 
-            redirect: false,
+            error: false,
         }
     }
     componentDidMount() { 
@@ -26,13 +26,13 @@ class Details extends React.Component {
         })
         .catch(err => {
             console.log('Err', err);
-            this.setState({ redirect: true })
+            this.setState({ error: true })
         })
         
     }
     render() {
-        if (this.state.redirect) {
-            return <Redirect to="/" />;
+        if (this.state.error) {
+            return <p style={{ color: "red" }}>This movie does not exist anymore, someone else has already deleted the fabulous movie!</p>;
         }
         let movie = this.state.movie
 

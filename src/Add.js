@@ -16,6 +16,7 @@ class Add extends React.Component {
             },
             redirect: false,
             id: "",
+            error: 0,
         };
     }
 
@@ -40,30 +41,38 @@ class Add extends React.Component {
             })
             .catch(err => {
                 console.log(err);
+                this.setState({ error: 2})
             })
     }
     render() {
-        let error, missingTitle, missingDirector, missingDescription, missingRating;
-
+        let missingMovie, missingTitle, missingDirector, missingDescription, missingRating;
         if (this.state.redirect) {
             return <Redirect to='/' />
         }
-        if (this.state.error) {
-            if (this.state.movie.title.length === 0) {
+        if (this.state.error === 1) {
+            missingMovie = <p style={{ color: "red" }}>Movie has been deleted! Pick a new and try again!</p>
+        }
+        if (this.state.movie.title.length === 0) {
+            if (this.state.error === 2) {
                 missingTitle = <p style={{ color: "red" }}>Title is missing</p>
             }
-            if (this.state.movie.director.length === 0) {
+        }
+        if (this.state.movie.director.length === 0) {
+            if (this.state.error === 2) {
                 missingDirector = <p style={{ color: "red" }}>Director is missing</p>
             }
-            //  Ser ej vad som felar med description!
-            /*             if (this.state.movie.description.length === 0) {
-                            missingDescription = <p>Description was missing</p>
-                        }
-                        if (this.state.movie.rate.length === 0) {
-                            missingRating = <p>Rating was missing</p>
-                        }
-             */
-                    }
+        }
+        if (this.state.movie.description.length === 0) {
+            if (this.state.error === 2) {
+                missingDescription = <p style={{ color: "red" }}>Description is missing</p>
+            }
+        }
+        if (this.state.movie.rating.length === 0) {
+            if (this.state.error === 2) {
+                missingRating = <p style={{ color: "red" }}>Rate is missing</p>
+            }
+        }
+
         return (
             <>
             <div>
@@ -98,7 +107,7 @@ class Add extends React.Component {
                             {missingDirector}
                         </div>
                     </div>
-                    <div className="inputDiv">
+                    <div className="inputDiv inputDescription">
                         <h3>Description</h3>
                         <textarea className="description"
                             type="text"
@@ -110,7 +119,7 @@ class Add extends React.Component {
                         />
                         {missingDescription}
                     </div>
-                    <div className="inputDiv">
+                    <div className="inputDiv inputRating">
                         <h3>Rating</h3>
                     <input className="rating"
                             type="number"
