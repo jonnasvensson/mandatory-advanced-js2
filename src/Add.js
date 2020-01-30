@@ -27,7 +27,8 @@ class Add extends React.Component {
 
         let movie = Object.assign({}, this.state.movie);    //  Object.assign --> lägger ihop object (this.state.movie blir det tomma objectet!)
         movie[name] = value;
-        this.setState({ movie });
+        this.setState({ movie, error:0 });
+
     }
     onSubmit = (e) => {
         e.preventDefault();

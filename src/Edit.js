@@ -26,7 +26,7 @@ class Edit extends React.Component {
 
         let movie = Object.assign({}, this.state.movie);    //  Object.assign --> lägger ihop object (this.state.movie blir det tomma objectet!)
         movie[name] = value;
-        this.setState({ movie });
+        this.setState({ movie, error: 0 });
 
     }
 
@@ -154,7 +154,7 @@ class Edit extends React.Component {
                         {missingRating}
                     </div>
                     <div>
-                        <button className="addEditutton" type="submit">Edit movie</button>
+                        <button className="addEditButton" type="submit">Edit movie</button>
                     </div>
                 </form>
                 {missingMovie}

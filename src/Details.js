@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Details extends React.Component {
     constructor(props) {
@@ -57,7 +58,7 @@ class Details extends React.Component {
                     <h4>Description</h4>
                     <p>{movie.description}</p>
                 </div>
-
+                <Link to={'/edit/' + movie.id}><button className="addEditButton">Edit movie</button></Link>
             </div>
         )
     }
