@@ -134,7 +134,7 @@ class Add extends React.Component {
                         {missingRating}
                     </div>
                     <div>
-                        <button className="addEditutton" type="submit">Add movie</button>
+                        <button className="addEditButton" type="submit">Add movie</button>
                     </div>
                 </form>
             </>

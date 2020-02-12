@@ -64,7 +64,7 @@ class Home extends React.Component {
                         <td>{director}</td>
                         <td>{rating}</td>
                         <td><button onClick={() => this.deleteOnClick(id)}>Delete movie</button></td>
-                        <td><button> <Link to={'/edit/' + movie.id}>Edit movie</Link></button></td>
+                        <td><Link to={'/edit/' + movie.id}><button>Edit movie</button></Link></td>
                     </tr>
                 )
             }
